@@ -3,6 +3,12 @@ const {Pool} = require('pg');
 const bcrypt = require('pg');
 const cors = require('cors');
 
+// DB_HOST=localhost        nosso .env !!
+// DB_USER=postgres
+// DB_PASSWORD=senai
+// DB_NAME=AdoptMe
+// DB_PORT=5432
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -38,5 +44,5 @@ app.post('/usuarios', async (req, res) =>{
         if (!senhaValid) {
             return res.status(401).json({ error: 'senha errada!' });
         }
-
-};
+    }
+});
