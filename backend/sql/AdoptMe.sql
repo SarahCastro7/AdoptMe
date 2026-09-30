@@ -1,55 +1,34 @@
-select * from usuarios
-select * from animais
-select * from doacao
+CREATE TABLE animais (
+  id_animal      SERIAL PRIMARY KEY,
+  especie_animal TEXT NOT NULL,
+  nome_animal    TEXT NOT NULL,
+  idade_animal   VARCHAR(50) NOT NULL,
+  genero_animal  VARCHAR(50) NOT NULL,   
+  foto_animal    TEXT                    
+);
 
-create table animais (
-	id_animal serial primary key, 
-	especie_animal text not null,
-	nome_animal text not null,
-	idade_animal varchar(50) not null,
-	genero_animal varchar(50) not null
-)
+CREATE TABLE usuarios (
+  id_usuario    SERIAL PRIMARY KEY,
+  nome_usuario  TEXT NOT NULL,
+  email_usuario VARCHAR(100) NOT NULL UNIQUE,
+  senha_usuario VARCHAR(100) NOT NULL    
+);
+CREATE TABLE doacao (
+  id_doacao   SERIAL PRIMARY KEY,
+  data_doacao TIMESTAMP DEFAULT NOW(),
+  id_usuario  INT REFERENCES usuarios(id_usuario),
+  id_animal   INT REFERENCES animais(id_animal)
+);
 
-create table usuarios (
-	id_usuario serial primary key,
-	nome_usuario text not null,
-	email_usuario varchar(100) not null unique,
-	senha_usuario varchar(100) not null,
-	id_animal serial,
-	FOREIGN KEY (id_animal) references animais(id_animal)
-) 
+INSERT INTO animais (especie_animal, nome_animal, idade_animal, genero_animal)
+VALUES ('tartaruga','Lilica','5','fem'), ('coelho','Dont','6','masc');
 
-create table doacao (
-	id_doacao serial primary key,
-	data_doacao TIMESTAMP,
-	id_usuario serial,
-	id_animal serial,
-		FOREIGN KEY (id_animal) references animais(id_animal),
-		FOREIGN KEY (id_usuario) references usuarios(id_usuario)
-)
+ALTER TABLE usuarios DROP COLUMN IF EXISTS id_animal;
 
-
-insert into animais (especie_animal, nome_animal, idade_animal, genero_animal)
-values ('tartaruga' ,'lilica', 5 , 'fem')
-
-insert into usuarios (nome_usuario, email_usuario, senha_usuario)
-values ('nanda' , 'nandatsu0@gmail.com' , 4848)
-
-insert into animais (especie_animal, nome_animal, idade_animal, genero_animal)
-values ('coelho' ,'dont', 6 , 'masc')
-
-insert into usuarios (nome_usuario, email_usuario, senha_usuario)
-values ('layla' , 'laylacollen@gmail.com' , 2222)
-
-SELECT
-    u.id_usuario,
-    u.nome_usuario,
-    u.email_usuario,
-    a.id_animal,
-    a.nome_animal,
-    a.especie_animal,
-    a.idade_animal,
-    a.genero_animal
+  u.id_usuario, u.nome_usuario, u.email_usuario,
+  a.id_animal, a.nome_animal, a.especie_animal, a.idade_animal, a.genero_animal,
+  d.data_doacao
 FROM usuarios u
-JOIN animais a
-    ON u.id_animal = a.id_animal;
+JOIN doacao d ON d.id_usuario = u.id_usuario
+JOIN animais a ON a.id_animal = d.id_animal
+ORDER BY d.data_doacao DESC;

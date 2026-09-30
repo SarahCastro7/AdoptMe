@@ -1,5 +1,402 @@
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #faf5ee;
+  --card: #fff;
+  --ink: #2b2622;
+  --mut: #6f665e;
+  --line: #e8dfd3;
+  --brand: #e0703a;
+  --brand-d: #c25a28;
+  --soft: #fdebdf;
+  --ok: #2f9e6b;
+}
+
+body {
+  font-family: 'Nunito', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+/* navbar (logo à esquerda, links à direita) */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 245, 238, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-in {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.logo span {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  font-weight: 600;
+}
+
+.nav-links a {
+  padding: 4px 0;
+  color: var(--mut);
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+}
+
+.nav-links a.ativo {
+  color: var(--ink);
+  border-color: var(--brand);
+}
+
+.avatar-mini {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--soft);
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--line);
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 36px 20px 60px;
+}
+
+.titulo {
+  font-size: 2rem;
+  margin-bottom: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 18px rgba(80, 50, 20, .05);
+}
+
+/* sobre + perfil */
+.sobre {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.sobre p {
+  margin-bottom: 14px;
+  color: var(--mut);
+}
+
+.img-box {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 20px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.stat {
+  text-align: center;
+  padding: 28px 16px;
+}
+
+.stat small {
+  display: block;
+  color: var(--mut);
+  font-weight: 600;
+}
+
+.stat strong {
+  display: block;
+  font-size: 2.6rem;
+  color: var(--brand);
+  line-height: 1.2;
+}
+
+/* formulário de doação */
+.form-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+}
+
+.foto-upload {
+  border: 2px dashed var(--line);
+  border-radius: 18px;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--mut);
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.foto-upload:hover {
+  border-color: var(--brand);
+}
+
+.foto-upload img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-content: start;
+}
+
+.campos .full {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  font-size: .85rem;
+  margin-bottom: 4px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font: inherit;
+  background: #fff;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--brand);
+  border-color: transparent;
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.btn {
+  padding: 11px 26px;
+  border-radius: 12px;
+  border: 2px solid var(--brand);
+  background: var(--brand);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--brand-d);
+}
+
+.btn.sec {
+  background: transparent;
+  color: var(--brand);
+}
+
+.btn.sec:hover {
+  background: var(--soft);
+}
+
+.msg {
+  margin-top: 14px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.msg.ok {
+  color: var(--ok);
+}
+
+.msg.erro {
+  color: #c0392b;
+}
+
+/* lista de animais */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.pet {
+  padding: 0;
+  overflow: hidden;
+}
+
+.pet .foto {
+  aspect-ratio: 1;
+  background: var(--soft);
+  display: grid;
+  place-items: center;
+  font-size: 3rem;
+}
+
+.pet .foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pet .info {
+  padding: 16px 18px 20px;
+}
+
+.pet h3 {
+  font-size: 1.2rem;
+}
+
+.pet p {
+  color: var(--mut);
+  font-size: .92rem;
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 12px;
+  border-radius: 99px;
+  background: var(--soft);
+  color: var(--brand-d);
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+/* perfil */
+.perfil {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.user {
+  text-align: center;
+}
+
+.user .foto {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--soft);
+  border: 3px solid var(--brand);
+  display: grid;
+  place-items: center;
+  font-size: 3rem;
+}
+
+.user small {
+  display: block;
+  color: var(--mut);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-top: 12px;
+}
+
+.user b {
+  display: block;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px;
+  margin-top: 3px;
+}
+
+.on {
+  color: var(--ok);
+}
+
+.link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: .85rem;
+  color: var(--brand-d);
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+
+  .sobre,
+  .form-card,
+  .perfil {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    gap: 14px;
+    font-size: .95rem;
+  }
+
+  .logo b {
+    display: none;
+  }
+}

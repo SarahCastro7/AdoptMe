@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { animalController } from '../controllers/animalControler.js'
+import { animalController } from '../controllers/animalController.js';
 
 const router = Router();
 
 router.get('/animais', animalController.getAll);
-router.get('/animal/:id', animalController.getById);
-router.post('/animal', animalController.create);
-router.put('/animal/:id', animalController.update);
-router.patch('/animal/:id', animalController.patch);
-router.delete('/animal/:id', animalController.delete);
+router.get('/animais/:id', animalController.getById);
+router.post('/animais', animalController.create);
+router.put('/animais/:id', animalController.update);
+router.delete('/animais/:id', animalController.remove);
+
 export default router;

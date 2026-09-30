@@ -1,104 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adopt Me</title>
-    <link rel="stylesheet" href="css/index.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdoptMe | Sobre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
-<body>
-    <header class="cabeçalho">
-        <section class="usuario-cabecalho">
-            <img src="#" alt="foto-usuario">
-            <div class="modal-login">
-                <button id="login-btn">login</button>
-                <button id="cadastro-btn">cadastro</button>
-            </div>
-        </section>
-
-        <div class="nav-menu">
-            <nav>
-                <a href="pages/adote.html">adotar</a>
-                <a href="pages/doar.html">doar</a>
-            </nav>
-        </div>
-        <h1>Adopt-Me</h1>
-    </header>
-    <main class="main-adopt">
-        <section class="sobre-adopt">
-            <h2>Sobre o Adopt-Me</h2>
-            <p>O Adopt-Me é uma plataforma dedicada a conectar pessoas que desejam adotar animais de estimação com
-                aqueles que estão em busca de um lar amoroso para seus companheiros peludos. Nosso objetivo é facilitar
-                o processo de adoção, promovendo a conscientização sobre a importância da adoção responsável e ajudando
-                a encontrar lares permanentes para animais necessitados.</p>
-            <img src="images/download.jpg" alt="teste-dog">
-        </section>
-
-        <section class="animais-salvos">
-            <div class="save-animais">
-                <img src="images/arrow-through-heart.svg" alt="icone-coração">
-                <h4>mais de 2 mil animais salvos da rua</h4>
-                <li> onde:
-                    <p>- vivem em um lar adequado</p>
-                    <p>- vistoria para garantir o bem-estar animal</p>
-                    <p> e mais...</p>
-                </li>
-            </div>
-
-            <div class="doação">
-                <img src="images/box2-heart.svg" alt="doar-animal">
-                <h4>animais para doação</h4>
-                <li> onde:
-                    <p>- oferecemos animais que precisam de um lar</p>
-                    <p>- total apoio e segurança</p>]
-                    <p>- vistoria para garantir o bem-estar animal</p>
-                    <p> e mais...</p>
-                </li>
-            </div>
-
-            <div class="adotar">
-                <img src="images/hand-holding-heart.svg" alt="adotar-animal">
-                <h4>animais para adoção</h4>
-                <li> onde:
-                    <p>- oferecemos animais que precisam de um lar</p>
-                    <p>- total apoio e segurança</p>]
-                    <p>- vistoria para garantir o bem-estar animal</p>
-                    <p> e mais...</p>
-                </li>
-            </div>
-        </section>
-        <div id="modalLogin" class="modal escondido">
-            <div class="modal-conteudo">
-                <button id="fecharLogin" class="botao-icone">
-                    <img src="anexos_prova/icones/close.svg" alt="Fechar login">
-                </button>
-                <h2>Login</h2>
-                <form id="formLogin" novalidate>
-                    <div class="campo">
-                        <label for="email">E-mail</label>
-                        <input id="email" type="email" placeholder="Digite seu e-mail">
-                        <small id="erroEmail" class="erro"></small>
-                    </div>
-                    <div class="campo">
-                        <label for="senha">Senha</label>
-                        <input id="senha" type="password" placeholder="Digite sua senha">
-                        <small id="erroSenha" class="erro"></small>
-                    </div>
-                    <p id="erroLogin" class="erro-login"></p>
-                    <div class="acoes-login">
-                        <button id="cancelarLogin" class="botao botao-contorno" type="button">Cancelar</button>
-                        <button class="botao botao-escuro" type="submit">Login</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-    </main>
-
+<body data-page="sobre" data-root="">
+  <main>
+    <h1 class="titulo">Sobre a AdoptMe</h1>
+    <section class="sobre">
+      <div>
+        <p>Somos uma organização onde pensamos na doação e adoção de animais, e garantimos um lar de qualidade para o
+          animal.</p>
+        <p>Além de também garantir um novo melhor amigo para o tutor e/ou família, aceitamos doações de ração, medicação
+          e material.</p>
+      </div>
+      <img class="img-box" src="images/download.jpg" alt="Cachorro sendo adotado">
+    </section>
+    <section class="stats">
+      <div class="card stat"><small>desde</small><strong>2021</strong></div>
+      <div class="card stat"><small>doações realizadas</small><strong>+2 mil</strong></div>
+    </section>
+  </main>
+  <script src="js/app.js"></script>
 </body>
 
 </html>

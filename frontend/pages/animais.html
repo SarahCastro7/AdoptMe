@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdoptMe | Animais</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body data-page="animais" data-root="../">
+  <main>
+    <h1 class="titulo">Animais para adoção</h1>
+    <section class="grid" id="lista"></section>
+    <p class="msg" id="msg" style="text-align:left"></p>
+  </main>
+  <script src="../js/app.js"></script>
+  <script>
+    const emoji = { cachorro: '🐶', gato: '🐱', coelho: '🐰', tartaruga: '🐢' };
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    async function carregar() {
+      const msg = document.getElementById('msg');
+      try {
+        const animais = await (await fetch(`${API}/animais`)).json();
+        if (!animais.length) { msg.textContent = 'Nenhum animal cadastrado ainda.'; return; }
+        document.getElementById('lista').innerHTML = animais.map(a => `
+          <article class="card pet">
+            <div class="foto">${a.foto ? `<img src="${esc(a.foto)}" alt="${esc(a.nome)}">` : (emoji[a.especie.toLowerCase()] || '🐾')}</div>
+            <div class="info">
+              <h3>${esc(a.nome)}</h3>
+              <p>${esc(a.especie)} · ${esc(a.idade)} ${a.idade == 1 ? 'ano' : 'anos'}</p>
+              <span class="tag">${a.genero === 'fem' ? 'Fêmea' : 'Macho'}</span>
+            </div>
+          </article>`).join('');
+      } catch {
+        msg.className = 'msg erro';
+        msg.textContent = 'Não consegui falar com o servidor. O backend está rodando (npm run dev)?';
+      }
+    }
+    carregar();
+  </script>
+</body>
+
+</html>
