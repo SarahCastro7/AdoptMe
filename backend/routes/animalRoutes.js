@@ -1,18 +1,12 @@
 import { Router } from 'express';
-import { barberController } from '../controllers/barberController.js'
+import { animalController } from '../controllers/animalControler.js'
 
 const router = Router();
 
-//buscar todos os barbeiros
-router.get('/barbeiros', barberController.getAll);
-//buscar barbeiro por id
-router.get('/barbeiro/:id', barberController.getById);
-//cadastrar barbeiro
-router.post('/barbeiro', barberController.create);
-//atualizar barbeiro
-router.put('/barbeiro/:id', barberController.update);
-//atualizar parcialmente o barbeiro
-router.patch('/barbeiro/:id', barberController.patch);
-//deletar barbeiro
-router.delete('/barbeiro/:id', barberController.delete);
+router.get('/animais', animalController.getAll);
+router.get('/animal/:id', animalController.getById);
+router.post('/animal', animalController.create);
+router.put('/animal/:id', animalController.update);
+router.patch('/animal/:id', animalController.patch);
+router.delete('/animal/:id', animalController.delete);
 export default router;

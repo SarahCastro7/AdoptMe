@@ -3,6 +3,8 @@ const {Pool} = require('pg');
 const bcrypt = require('pg');
 const cors = require('cors');
 
+import {animalRoutes} from '../backend/routes/animalRoutes.js'
+
 // DB_HOST=localhost        nosso .env !!
 // DB_USER=postgres
 // DB_PASSWORD=senai
@@ -17,7 +19,7 @@ const port = 3000;
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'NewUsuarios',
+    database: 'AdoptMe',
     password: 'senai',
     port: 5432
 });

@@ -1,21 +1,21 @@
-import {barberRepository} from '../repositories/barberRepository.js'
+import {animalRepository} from '../repositories/animalRepository.js'
 
-export const BarbeiroService = {
-    async getALLbarbeiros(){
-        return await barberRepository.findAll()
+export const animalService = {
+    async getALLanimais(){
+        return await animalRepository.findAll()
     },
 
     async getbarbeiro (id) {
-        const barbeiroExistente = await barberRepository.findById(id)
-        if(!barbeiroExistente) throw new Error ("barbeiro nao foi encontrado")
-        return barbeiroExistente
+        const animalExistente = await animalRepository.findById(id)
+        if(!animalExistente) throw new Error ("animal nao foi encontrado")
+        return animalExistente
     },
 
-    async createBarbeiro (barbeiroRequisicao){
-        if(barbeiroRequisicao.nome.length < 3) {
-            throw new Error ("nome do barbeiro deve ter no minimo 3 caracteres")
+    async createanimal (animalRequisicao){
+        if(animalRequisicao.nome.length < 3) {
+            throw new Error ("nome do animal deve ter no minimo 3 caracteres")
         }
-        return await barberRepository.create(barbeiroRequisicao);
+        return await animalRepository.create(animalRequisicao);
     },
 
     

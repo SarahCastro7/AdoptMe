@@ -1,10 +1,10 @@
-import {barberService} from '../services/barberService.js'
+import {animalService} from '../service/animalService'
 
-export const barberController = {
+export const animalController = {
     async getAll(req, res){
         try{ 
-            const barbeiros = await barberService.getAllBarbeiros();
-            res.json(barbeiros);
+            const animais = await animalService.getAllanimais();
+            res.json(animais);
         }catch(error){
             res.status(404).json({erro: error.message})
         }
@@ -12,8 +12,8 @@ export const barberController = {
 
     async getById(req,res){
         try {
-            const barbeiroBuscado = await barberService.getBarbeiro(req.params.id);
-            res.status(200).json(barbeiroBuscado);
+            const animalBuscado = await animalService.getanimal(req.params.id);
+            res.status(200).json(animalBuscado);
         } catch (error) {
             res.status(404).json({ erro: error.message });
         }
@@ -21,8 +21,8 @@ export const barberController = {
 
     async create(req, res){
         try{
-            const novoBarbeiro = await barberService.createBarbeiro(req.body);
-            res.status(201).json(novoBarbeiro);
+            const novoanimal = await animalService.createanimal(req.body);
+            res.status(201).json(novoanimal);
         }catch(error){
             res.status(400).json({erro: error.message});
         }
@@ -30,22 +30,22 @@ export const barberController = {
 
     async update(req, res){
         try{
-            const barbeiroAtualizado = await barberService.updateBarbeiro(
+            const animalAtualizado = await animalService.updateanimal(
                 req.params.id, req.body)
-            res.json(barbeiroAtualizado)
+            res.json(animalAtualizado)
         }catch(error){
-            const status = error.message === "Barbeiro não encontrado" ? 404 : 400;
+            const status = error.message === "animal não encontrado" ? 404 : 400;
             res.status(status).json({erro: error.message});
         }
     },
 
     async patch (req, res){
         try{
-            const barbeiroAtualizado = await barberService.patchBarbeiro(
+            const animalAtualizado = await animalService.patchanimal(
                 req.params.id, req.body)
-        res.status(200).json(barbeiroAtualizado);
+        res.status(200).json(animalAtualizado);
         }catch(error){
-            const status = error.message === 'Barbeiro não encontrado' ? 404 : 400;
+            const status = error.message === 'animal não encontrado' ? 404 : 400;
             res.status(status).json({
                 erro: error.message
             });
@@ -53,10 +53,10 @@ export const barberController = {
     },
     async delete(req, res){
         try{
-        const barbeiroDeletado = await barberService.deleteBarbeiro(req.params.id);
-        res.status(200).json(barbeiroDeletado)
+        const animaloDeletado = await animalService.deleteanimal(req.params.id);
+        res.status(200).json(animalDeletado)
         }catch(error){
-            const status = error.message === 'Barbeiro não encontrado' ? 404 : 400;
+            const status = error.message === 'animal não encontrado' ? 404 : 400;
         res.status(status).json({erro: error.message});
         }
     }
