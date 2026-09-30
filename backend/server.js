@@ -47,4 +47,8 @@ app.post('/usuarios', async (req, res) =>{
             return res.status(401).json({ error: 'senha errada!' });
         }
     }
+    catch (error) {
+        console.error('Erro ao buscar usuário:', error);
+        return res.status(500).json({ error: 'Erro interno do servidor' });
+    }   
 });
